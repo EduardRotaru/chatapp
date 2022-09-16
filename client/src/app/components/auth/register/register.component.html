@@ -1,0 +1,69 @@
+<div class="container mb-5">
+    <div class="row">
+        <div class="modal-header">
+            <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+          </div>
+        <nav class="navbar ">
+            <a class="navbar-brand mx-auto mt-2" href="#">
+                <h1>
+                    <img src="https://cdn-icons.flaticon.com/png/512/6007/premium/6007784.png?token=exp=1656587209~hmac=8c6475ace187d6afbb399deed1aabe85"
+                        width="50" height="50" class="d-inline-block align-top" alt="">
+                    Register
+                </h1>
+            </a>
+        </nav>
+        <div class="col-12 d-flex justify-content-center align-items-center container">
+            <form class="form-group" [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off">
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="username">Username</label>
+                    <input id="username" class="form-control" formControlName="username" placeholder="Username">
+                    <div style="color:red">
+                        <span *ngIf="username.errors?.['required'] && username.touched">
+                            Username is required
+                        </span>
+                    </div>
+                </div>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="email">Email</label>
+                    <input id="email" class="form-control" formControlName="email" placeholder="Email" email>
+                    <div style="color:red">
+                        <span *ngIf="email.errors?.['required'] && email.touched">
+                            Email is required
+                        </span>
+                        <div *ngIf="email.errors && email.touched">
+                            Email is invalid
+                        </div>
+                    </div>
+                </div>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="password">Password</label>
+                    <input id="password" class="form-control" formControlName="password" type="password"
+                        placeholder="Password" (change)="onPasswordChange()">
+                    <div style="color:red">
+                        <span *ngIf="password.errors?.['required'] && password.touched">
+                            Password is required
+                        </span>
+                    </div>
+                </div>
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="password">Comfirm Password</label>
+                    <input class="form-control" formControlName="confirmPassword" type="password"
+                        placeholder="Confirm Password" (change)="onPasswordChange()">
+                    <div style="color:red">
+                        <span *ngIf="confirmPassword.errors?.['required'] && confirmPassword.touched">
+                            Password confirmation is required
+                        </span>
+                        <span *ngIf="confirmPassword.errors?.['mismatch'] && confirmPassword.touched">
+                            Passwords do not match
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group text-center">
+                    <button [disabled]='!registerForm.valid' class="btn btn-outline-primary mr-2"
+                        type="submit">Register</button>
+                    <button class="btn btn-default mr-2" (click)="cancel()" type="button">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

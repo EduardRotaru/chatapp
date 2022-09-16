@@ -1,0 +1,10 @@
+.git
+.vs
+.vscode
+**/node_modules
+**/appSettings.Development.json
+**/appSettings.json
+**/wwwroot
+**/obj
+**/bin
+**/.angular

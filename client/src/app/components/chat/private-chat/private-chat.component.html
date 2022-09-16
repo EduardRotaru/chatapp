@@ -1,0 +1,54 @@
+  <div *ngIf="visible" class="row justify-content-center">
+    <div class="col-sm-8">
+      <div class="text-white">
+        <div style="height:500px; overflow-y: scroll; background-color: #0C6178">
+          <div *ngFor="let message of privateMessages" style="display: flex;align-items:center;">
+            <img src="{{message.img}}" alt="" height="30" width="30" style="margin-top:10px;margin-left:10px">
+            <span style="padding:20px">{{message.message}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="tab">
+        <button type="button" class="btn btn-primary active" (click)="selectMain()">Main</button>
+        <div *ngFor="let item of componentRefTabs; let i = index" style="display:inline-block;">
+          <button type="button" class="btn btn-secondary active"
+            (click)="openTab(i)">{{item.component.instance.tabName}}</button>
+          <button type="button" class="btn btn-secondary active" (click)="destroyTab(i)">x</button>
+        </div>
+      </div>
+      <div class="text-white">
+        <label for="message">Message</label>
+        <form (ngSubmit)="sendPrivateMessage()" #chatForm="ngForm" style="align-items:center;display:flex;">
+          <div class="form-group">
+
+            <div class="emoji-list" *ngFor="let item of mapEmoji | keyvalue; let i = index">
+              <p emoji="{{item.key}}" (click)="insertEmojiInMessage(item.key, i)"></p>
+            </div>
+
+             <textarea class="form-control" placeholder="Type a message" type="text" name="textarea"
+              [(ngModel)]="privateMessage" rows="2" cols="110" style="display:inline-block;resize:none;"
+              (keyup)="editTextareaMessage()"></textarea> 
+          </div>
+
+          <button class="btn btn-primary h-50" style="align-self:middle;" type="submit" id="sendmessage"
+            [disabled]="!chatForm.valid">
+            Send
+          </button>
+
+        </form>
+      </div>
+    </div>
+    <div class="col-sm-2">
+      <div class="text-white" style="height:500px;background-color:#748CF8;padding:10px;">
+        <p style="display:flex;">{{senderName}} - {{senderConnectionId}} </p>
+        <p style="display:flex;">{{tabName}} -  {{receiverConnectionId}}</p>
+      </div>
+      <button class="btn btn-primary">Create group</button>
+      <div class="row justify-content-left">
+        <div class="col-sm-10 py-3" style="display:inline-flex;">
+          <a class="px-2 link-primary" *ngIf="!(authService.isLoggedIn$ | async)" (click)="openLogin()">Login</a>
+          <p class="px-2" *ngIf="authService.isLoggedIn$ | async" (click)="logout()">Logout</p>
+        </div>
+      </div>
+    </div>
+  </div>

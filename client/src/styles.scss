@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@ctrl/ngx-emoji-mart/picker';
+@import "~font-awesome/scss/font-awesome";
+
+body {
+    background-color: #EEEEEE !important;
+    color: F1EEE9 !important;
+}
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

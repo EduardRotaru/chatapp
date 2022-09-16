@@ -1,0 +1,55 @@
+V1
+public chat
+users list
+private chat
+basic dumb css
+Authentication and Authorization
+Deploy
+
+V2
+Allow anonymous users and loggedin users, prevent same username with same connectionid
+Users get a random image 
+Registered users can change their chat name and photo also can create their own group (just add the btn in client)
+    -- save in db user profile and connect to the hub with it
+Details - like validation, opening chats from user list too
+add own emoticons 
+
+f̶r̶i̶e̶n̶d̶l̶i̶s̶t̶ -̶   pointless task
+last css, try a decent one - refactorization needed for private chat
+
+Bugs after V2
+Fixed - Connectionlist not retrieved properly anymore
+Fixed - Adding Removing static vs cloud images not working properly
+
+V3
+notify when new private message
+status, disconnected or connected
+
+Create own chat by group, give administrator role and be able to give roles or ban people
+Custom css for each group - some basic colors to change
+show list of groups below the user chat, user can leave a group, if is own group is gonna get deleted from db.
+
+OnDisconnectasync throws exception sometimes, fix after v3
+
+/// Above old stuff haven't touched in months.
+
+Tasks to get done now:
+Done: 1. Refreshing page, refreshes username, it should hold the username.
+    - possible solutions
+     This worked:   a. Store in localstorage the connectionId and username, check if disconnect happens on refresh or closing the tab. Try to restore same username with same connectionId
+        b. Store in db connectionId, username and retrieve it from localstorage if exists when connecting.
+        
+2. Disconnected, Online status for user list.
+3. New message status - do not auto-open the new chat
+4. Create groups, give admin role to group creator, allow him to give other roles. Add kick option for x amount of time, thats all.
+5. Allow group admin to have custom css to its chat.
+6. Build and deploy
+
+Bugs, Exceptions.
+0. Clean code
+Fixed 1. Editing profile broken for some reason (401 Unauthorized)
+Fixed 2. I don't like this line in program.cs   context.HttpContext.Items["tokenIsValid"] = true; // Is in a try catch block, if token is invalid this line is never reached.
+
+
+    //"UsersConnection": "Server=DESKTOP-KIQD6U1;Initial Catalog=ChatAppUsersDatabase;Integrated Security=True"
+    // "UsersConnection": "Data Source=SQL8002.site4now.net;Initial Catalog=db_a89a4f_ioaneduard;User Id=db_a89a4f_ioaneduard_admin;Password=123456qQ!"

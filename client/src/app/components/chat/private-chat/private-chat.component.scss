@@ -1,0 +1,35 @@
+
+/* Style the tab */
+// .tab {
+//   background-color: #f1f1f1;
+//   border: 1px solid #ccc;
+//   overflow: hidden;
+//   width: 80px;
+// }
+// /* Style the buttons inside the tab */
+// .tab button {
+//   background-color: inherit;
+//   float: left;
+//   border: none;
+//   outline: none;
+//   cursor: pointer;
+//   padding: 14px 16px;
+//   transition: 0.3s;
+//   font-size: 17px;
+// }
+// /* Change background color of buttons on hover */
+// .tab button:hover {
+//   background-color: #ddd;
+// }
+
+.emoji-btn {
+    display:inline-block;
+    font-size:25px;
+    background-color: transparent;
+    border-color: transparent;
+  }
+
+  
+  .emoji-list {
+    display: inline-flex;
+  }
